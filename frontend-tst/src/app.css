@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+}
+
+.others{
+    flex:5;
+    margin: 20px;
+}

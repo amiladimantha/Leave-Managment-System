@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2kwCHskyMOoUwv8n6VUp2KH2fTVUrNIK9GrBwCyJvrk=",
+  "Source": "usermg_backend",
+  "BasePath": "_content/usermg_backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
