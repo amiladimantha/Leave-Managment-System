@@ -16,9 +16,12 @@ namespace usermg_backend.Controllers
     public class DeleteLeaveController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public DeleteLeaveController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public DeleteLeaveController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -29,8 +32,7 @@ namespace usermg_backend.Controllers
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.DeleteLeave(deleteLeave, connection);
+            response = _dal.DeleteLeave(deleteLeave, connection);
             return response;
         }
 

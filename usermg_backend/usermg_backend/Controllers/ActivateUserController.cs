@@ -16,24 +16,22 @@ namespace usermg_backend.Controllers
     public class ActivateUserController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public ActivateUserController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public ActivateUserController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
         [Route("ActivateUser")]
-        
-
         public Response ActivateUser(ActivateUser activateUser)
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.ActivateUser(activateUser, connection);
+            response = _dal.ActivateUser(activateUser, connection);
             return response;
         }
-
-       
     }
 }

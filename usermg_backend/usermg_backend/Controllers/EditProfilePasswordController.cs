@@ -10,9 +10,12 @@ namespace usermg_backend.Controllers
     public class EditProfilePasswordController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public EditProfilePasswordController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public EditProfilePasswordController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -22,8 +25,7 @@ namespace usermg_backend.Controllers
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.EditProfilePassword(editProfilePassword, connection);
+            response = _dal.EditProfilePassword(editProfilePassword, connection);
             return response;
         }
 

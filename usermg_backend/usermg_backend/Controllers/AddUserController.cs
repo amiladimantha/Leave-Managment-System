@@ -9,9 +9,12 @@ namespace usermg_backend.Controllers
     public class AddUserController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public AddUserController(IConfiguration configuration) 
+        private readonly IDal _dal;
+
+        public AddUserController(IConfiguration configuration, IDal dal)
         {
-            _configuration= configuration;
+            _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -20,9 +23,8 @@ namespace usermg_backend.Controllers
         public Response AddUser(AddUser addUser) 
         {
             Response response = new Response();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.AddUser(addUser, connection);
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());            
+            response = _dal.AddUser(addUser, connection);
             return response;
         }
     }

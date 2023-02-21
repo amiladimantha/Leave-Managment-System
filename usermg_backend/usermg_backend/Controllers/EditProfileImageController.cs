@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using usermg_backend.Models;
 
 [ApiController]
 [Route("api/[controller]")]
 public class EditProfileImageController : ControllerBase
 {
     private readonly IConfiguration _configuration;
+    private readonly IDal _dal;
 
-    public EditProfileImageController(IConfiguration configuration)
+    public EditProfileImageController(IConfiguration configuration, IDal dal)
     {
         _configuration = configuration;
+        _dal = dal;
     }
 
     [HttpPost("EditProfileImage")]

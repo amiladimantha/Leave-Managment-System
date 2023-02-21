@@ -5,7 +5,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace usermg_backend.Models
 {
-    public class Dal
+    public class Dal : IDal
     {
         public Response Registration(Registration registration, SqlConnection connection)
         {

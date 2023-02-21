@@ -9,9 +9,12 @@ namespace usermg_backend.Controllers
     public class RegistrationListController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public RegistrationListController(IConfiguration configuration) 
+        private readonly IDal _dal;
+
+        public RegistrationListController(IConfiguration configuration, IDal dal)
         {
-            _configuration= configuration;
+            _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpGet]
@@ -22,8 +25,7 @@ namespace usermg_backend.Controllers
 
             Response response = new Response();           
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.RegistrationList(connection);
+            response = _dal.RegistrationList(connection);
             return response;
 
         }
@@ -36,8 +38,7 @@ namespace usermg_backend.Controllers
 
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.RegistrationListManager(connection);
+            response = _dal.RegistrationListManager(connection);
             return response;
 
         }

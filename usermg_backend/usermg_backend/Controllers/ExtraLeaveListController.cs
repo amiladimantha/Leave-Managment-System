@@ -9,9 +9,12 @@ namespace usermg_backend.Controllers
     public class ExtraLeaveListController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public ExtraLeaveListController(IConfiguration configuration) 
+        private readonly IDal _dal;
+
+        public ExtraLeaveListController(IConfiguration configuration, IDal dal)
         {
-            _configuration= configuration;
+            _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpGet]
@@ -22,8 +25,7 @@ namespace usermg_backend.Controllers
 
             Response response = new Response();           
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.ExtraLeaveList(connection);
+            response = _dal.ExtraLeaveList(connection);
             return response;
 
         }            

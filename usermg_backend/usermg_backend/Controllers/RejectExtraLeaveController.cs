@@ -16,9 +16,12 @@ namespace usermg_backend.Controllers
     public class RejectLeaveController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public RejectLeaveController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public RejectLeaveController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -29,8 +32,7 @@ namespace usermg_backend.Controllers
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.RejectLeave(rejectLeave, connection);
+            response = _dal.RejectLeave(rejectLeave, connection);
             return response;
         }
 

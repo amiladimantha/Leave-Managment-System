@@ -11,64 +11,24 @@ namespace usermg_backend.Controllers
     public class RegistrationController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public RegistrationController(IConfiguration configuration) 
+        private readonly IDal _dal;
+
+        public RegistrationController(IConfiguration configuration, IDal dal)
         {
-            _configuration= configuration;
+            _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
         [Route("Registration")]
 
-        public Response Registration(Registration registration) 
+        public Response Registration(Registration registration)
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.Registration(registration,connection);
+            response = _dal.Registration(registration, connection);
             return response;
         }
-
-
-        [HttpPost]
-        [Route("Login")]
-
-        public Response Login(Login login)
-        {
-            Response response = new Response();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.Login(login, connection);
-            return response;
-        }
-
-
-        [HttpPost]
-        [Route("StaffRegistration")]
-
-        public Response StaffRegistration(Staff staff)
-        {
-            Response response = new Response();
-            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.StaffRegistration(staff, connection);
-            return response;
-        }
-
-       
-
-        //[HttpPost]
-        //[Route("RegistrationList")]
-
-        //public Response RegistrationList(Registration registration)
-        //{
-        //    Response response = new Response();
-        //    SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-        //    Dal dal = new Dal();
-        //    response = dal.RegistrationList(registration, connection);
-        //    return response;
-        //}
-
-
 
     }
 }

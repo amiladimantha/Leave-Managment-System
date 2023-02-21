@@ -16,9 +16,12 @@ namespace usermg_backend.Controllers
     public class DeleteExtraLeaveController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public DeleteExtraLeaveController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public DeleteExtraLeaveController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -29,8 +32,7 @@ namespace usermg_backend.Controllers
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.DeleteExtraLeave(deleteExtraLeave, connection);
+            response = _dal.DeleteExtraLeave(deleteExtraLeave, connection);
             return response;
         }
 

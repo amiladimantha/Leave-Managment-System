@@ -9,9 +9,12 @@ namespace usermg_backend.Controllers
     public class MyLeaveListController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public MyLeaveListController(IConfiguration configuration) 
+        private readonly IDal _dal;
+
+        public MyLeaveListController(IConfiguration configuration, IDal dal)
         {
-            _configuration= configuration;
+            _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -22,8 +25,7 @@ namespace usermg_backend.Controllers
 
             Response response = new Response();           
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.MyLeaveList(myLeaveList, connection);
+            response = _dal.MyLeaveList(myLeaveList, connection);
             return response;
 
         }

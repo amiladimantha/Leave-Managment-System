@@ -10,9 +10,12 @@ namespace usermg_backend.Controllers
     public class EditProfileEmailController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public EditProfileEmailController(IConfiguration configuration)
+        private readonly IDal _dal;
+
+        public EditProfileEmailController(IConfiguration configuration, IDal dal)
         {
             _configuration = configuration;
+            _dal = dal;
         }
 
         [HttpPost]
@@ -22,8 +25,7 @@ namespace usermg_backend.Controllers
         {
             Response response = new Response();
             SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("usermgdatabase").ToString());
-            Dal dal = new Dal();
-            response = dal.EditProfileEmail(editProfileEmail, connection);
+            response = _dal.EditProfileEmail(editProfileEmail, connection);
             return response;
         }
 
