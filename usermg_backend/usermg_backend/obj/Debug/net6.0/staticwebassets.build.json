@@ -1,19 +1,11 @@
 {
   "Version": 1,
-  "Hash": "D3I/JzvaXgAGifMgWTGZWYc0OPKpq+NIRGWwSdVfkHw=",
+  "Hash": "2kwCHskyMOoUwv8n6VUp2KH2fTVUrNIK9GrBwCyJvrk=",
   "Source": "usermg_backend",
   "BasePath": "_content/usermg_backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [
-    {
-      "Name": "usermg_backend\\wwwroot",
-      "Source": "usermg_backend",
-      "ContentRoot": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure Repo\\LMS\\usermg_backend\\usermg_backend\\wwwroot\\",
-      "BasePath": "_content/usermg_backend",
-      "Pattern": "**"
-    }
-  ],
+  "DiscoveryPatterns": [],
   "Assets": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ssEGTSR6djEe+5rF9ZoM8AZA1xpaDI7yLkcjWMl/mJuHrUdqf4gCrlyl22fCjPmD1adWohREeVGolDgZwkq1Mw==",
+  "dgSpecHash": "7QGjEaGrlMjBQcTEsl25woHGKFnedXkmI84u3Xw9LLmYp7LUuXE/MeBRDsacatemCsOrAopG8hUbqCz7Ht3o6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure Repo\\LMS\\usermg_backend\\usermg_backend\\usermg_backend.csproj",
+  "projectFilePath": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\usermg_backend\\usermg_backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\amila\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\amila\\.nuget\\packages\\azure.extensions.aspnetcore.configuration.secrets\\1.0.0\\azure.extensions.aspnetcore.configuration.secrets.1.0.0.nupkg.sha512",

@@ -4,11 +4,23 @@
   background-color: rgb(251, 251, 255);
   position: sticky;
   top: 50px;
+  transition : transform 1s ease-out;
+  transform: translateX(0);
+}
+
+.sidebar.visible{
+    transform: translateX(-80%);
 }
 
 .sidebarWrapper{
     padding: 10px;
     color: #555;
+}
+
+.sidebarwrappersecondary{
+    position: absolute;
+  right: 10px;
+  top : 10px;
 }
 
 .sidebarMenu{
