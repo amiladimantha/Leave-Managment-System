@@ -85,8 +85,7 @@
 /* ///////////// users ////////*/
 
 .datatable { 
-	font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
+border-radius: 10px;
   width: 100%;
   overflow-x: scroll;
 	}
@@ -101,10 +100,10 @@
 }
 
 .datatable th {
-    padding-top: 12px;
+  padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #368dd0;
+  background-color: #0097E6;
   color: white;
 }
 

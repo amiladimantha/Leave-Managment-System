@@ -12,7 +12,7 @@ const Home = () => {
   }, []);
 
   const getData = () => {
-    const url = "https://localhost:7068/api/LeaveList/LeaveList";
+    const url = "https://localhost:7046/api/Leave/LeaveList";
     axios
       .get(url, data)
       .then((result) => {

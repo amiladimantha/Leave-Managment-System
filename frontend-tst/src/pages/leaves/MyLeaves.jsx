@@ -28,7 +28,7 @@ const DataTable = () => {
     const data = {
       CreatorID: localStorage.getItem("id"),
     };
-    const url = "https://localhost:7068/api/MyLeaveList/MyLeaveList";
+    const url = "https://localhost:7046/api/Leave/MyLeaveList";
     
     
     axios
@@ -50,7 +50,7 @@ const DataTable = () => {
     const postdataex = {
       CreatorID: localStorage.getItem("id"),
     };
-    const url = "https://localhost:7068/api/MyExtraLeaveList/MyExtraLeaveList";
+    const url = "https://localhost:7046/api/ExtraLeave/MyExtraLeaveList";
     axios
       .post(url, postdataex)
       .then((result) => {
@@ -71,7 +71,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/DeleteUser/DeleteUser";
+    const url = "https://localhost:7046/api/User/DeleteUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -94,7 +94,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/ApproveUser/ApproveUser";
+    const url = "https://localhost:7046/api/User/ApproveUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -112,25 +112,26 @@ const DataTable = () => {
   return (
     <>
 
-<Row gutter={16}>
-    <Col span={6}>
-      <Card className="info-card-1" title="Total Leaves" >
-        <p style={{fontSize:'40px'}}>{data.length + dataex.length}</p>
-      </Card>
-    </Col>
-    <Col span={6}>
+<Row gutter={[16, 16]}>
+      
+    <Col xs={24} sm={12} md={6}>
       <Card className="info-card-2" title="Approved Leaves" >
       <p style={{fontSize:'40px'}}>{approvedCount}</p>
       </Card>
     </Col>
-    <Col span={6}>
+    <Col xs={24} sm={12} md={6}>
       <Card className="info-card-3" title="Rejected Leaves" >
         <p style={{fontSize:'40px'}}>{rejectedCount}</p>
       </Card>
     </Col>
-    <Col span={6}>
+    <Col xs={24} sm={12} md={6}>
       <Card className="info-card-4" title="Pending Approvals" >
         <p style={{fontSize:'40px'}}>{pendingCount}</p>
+      </Card>
+    </Col>
+    <Col xs={24} sm={12} md={6}>
+      <Card className="info-card-1" title="Total Leaves" >
+        <p style={{fontSize:'40px'}}>{data.length + dataex.length}</p>
       </Card>
     </Col>
   </Row>
@@ -138,17 +139,17 @@ const DataTable = () => {
       <div>
       <h3>My Leaves</h3>
       {data ? (
-          <table className="datatable">
-            <thead>
+          <table className="datatable" style={{borderRadius: '10px !important'}}>
+            <thead >
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
                 <th scope="col">To Date</th>
                 <th scope="col">No of Days</th>
                 <th scope="col">Leave Type</th>
-                <th scope="col">Is Approved</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Is Approved</th>
               </tr>
             </thead>
             <tbody>
@@ -180,14 +181,14 @@ const DataTable = () => {
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
                 <th scope="col">To Date</th>
                 <th scope="col">No of Days</th>
                 <th scope="col">Reason</th>
-                <th scope="col">Is Approved</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Is Approved</th>
               </tr>
             </thead>
             <tbody>
@@ -211,6 +212,9 @@ const DataTable = () => {
           "No data found"
         )}
       </div>
+
+      <br />
+      <br />
 
 
     </>

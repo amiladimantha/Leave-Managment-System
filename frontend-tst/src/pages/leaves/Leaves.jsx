@@ -26,7 +26,7 @@ const DataTable = () => {
   }, []);
 
   const getData = () => {
-    const url = "https://localhost:7068/api/LeaveList/LeaveList";
+    const url = "https://localhost:7046/api/Leave/LeaveList";
     axios
       .get(url, data)
       .then((result) => {
@@ -47,7 +47,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/ApproveLeave/ApproveLeave";
+    const url = "https://localhost:7046/api/Leave/ApproveLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -67,7 +67,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/RejectLeave/RejectLeave";
+    const url = "https://localhost:7046/api/Leave/RejectLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -88,7 +88,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/DeleteLeave/DeleteLeave";
+    const url = "https://localhost:7046/api/Leave/DeleteLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -148,7 +148,7 @@ const DataTable = () => {
        
     formWindow.handleSaveClick = () => {
       axios
-        .post("https://localhost:7068/api/RegistrationList/UpdateRegistration", editData)
+        .post("https://localhost:7046/api/RegistrationList/UpdateRegistration", editData)
         .then((result) => {
           if (result.status === 200) {
             setData((prevData) =>
@@ -186,7 +186,7 @@ const DataTable = () => {
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
@@ -197,7 +197,7 @@ const DataTable = () => {
                 <th scope="col">Approvals</th>
                 <th scope="col">Rejections</th>
                 <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -272,7 +272,7 @@ const DataTable = () => {
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
@@ -281,7 +281,7 @@ const DataTable = () => {
                 <th scope="col">Leave Type</th>
                 <th scope="col">Is Approved</th>
                 <th scope="col">Approvals</th>
-                <th scope="col">Rejections</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Rejections</th>
               </tr>
             </thead>
             <tbody>
@@ -400,7 +400,7 @@ export default DataTable;
 //   }, []);
 
 //   const getData = () => {
-//     const url = "https://localhost:7068/api/RegistrationList/RegistrationList";
+//     const url = "https://localhost:7046/api/RegistrationList/RegistrationList";
 //     axios
 //       .get(url, data)
 //       .then((result) => {
@@ -417,7 +417,7 @@ export default DataTable;
 
 //   const getDataM = () => {
 //     const url =
-//       "https://localhost:7068/api/RegistrationList/RegistrationListManager";
+//       "https://localhost:7046/api/RegistrationList/RegistrationListManager";
 //     axios
 //       .get(url, datam)
 //       .then((result) => {
@@ -437,7 +437,7 @@ export default DataTable;
 //     const data = {
 //       ID: id,
 //     };
-//     const url = "https://localhost:7068/api/DeleteUser/DeleteUser";
+//     const url = "https://localhost:7046/api/DeleteUser/DeleteUser";
 //     axios
 //       .post(url, data)
 //       .then((result) => {
@@ -457,7 +457,7 @@ export default DataTable;
 //     const data = {
 //       ID: id,
 //     };
-//     const url = "https://localhost:7068/api/BlockUser/BlockUser";
+//     const url = "https://localhost:7046/api/BlockUser/BlockUser";
 //     axios
 //       .post(url, data)
 //       .then((result) => {

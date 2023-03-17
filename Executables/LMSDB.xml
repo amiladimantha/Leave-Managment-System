@@ -1,0 +1,83 @@
+<?xml version="1.0" standalone="yes"?>
+<LMS>
+  <registration ID="0">
+    <Name>Admin</Name>
+    <Email>admin@gmail.com</Email>
+    <Password>nyKq4FXckfUq3AyecAFYqw==</Password>
+    <Phone>0773580062</Phone>
+    <Address>Colombo, Sri Lanka</Address>
+    <Birthday>1999-06-02T04:08:47.105Z</Birthday>
+    <AccountType>0</AccountType>
+    <IsActive>1</IsActive>
+    <IsApproved>1</IsApproved>
+  </registration>
+  <registration ID="1">
+    <Name>Selva</Name>
+    <Email>Selva@gmail.com</Email>
+    <Password>8WeP7TIa0vXhah4OX3YLwQ==</Password>
+    <Phone>0112457896</Phone>
+    <Address>78/c,templeRoad, Maradana</Address>
+    <Birthday>1990-02-28 06:46:09.937</Birthday>
+    <AccountType>1</AccountType>
+    <IsActive>1</IsActive>
+    <IsApproved>1</IsApproved>
+  </registration>
+  <registration ID="2">
+    <Name>Jon Snow</Name>
+    <Email>jonsnow@gmail.com</Email>
+    <Password>UZJMFDv8DxRj88UU3GwJ1g==</Password>
+    <Phone>0112369637</Phone>
+    <Address>78/c,Blaze Road, Maradana</Address>
+    <Birthday>1993-02-28 06:46:09.937</Birthday>
+    <AccountType>2</AccountType>
+    <IsActive>1</IsActive>
+    <IsApproved>1</IsApproved>
+  </registration>
+  <registration ID="4">
+    <Name>Ginny</Name>
+    <Email>ginny@gmail.com</Email>
+    <Password>5NfVuUczuYvOmM7W5wKIDw==</Password>
+    <Phone>0112365896</Phone>
+    <Address>Colombo, Sri Lanka</Address>
+    <Birthday>1990-02-14T05:37:55.908Z</Birthday>
+    <AccountType>1</AccountType>
+    <IsActive>1</IsActive>
+    <IsApproved>1</IsApproved>
+  </registration>
+  <leaves ID="0">
+    <CreatorID>1</CreatorID>
+    <CreatorName>Selva</CreatorName>
+    <FromDate>2022-01-04&gt;</FromDate>
+    <ToDate>2022-01-05&gt;</ToDate>
+    <NoofDays>1</NoofDays>
+    <LeaveType>1</LeaveType>
+    <IsApproved>2</IsApproved>
+  </leaves>
+  <leaves ID="1">
+    <CreatorID>0</CreatorID>
+    <CreatorName>Admin</CreatorName>
+    <FromDate>2022-02-04&gt;</FromDate>
+    <ToDate>2022-02-05&gt;</ToDate>
+    <NoofDays>1</NoofDays>
+    <LeaveType>1</LeaveType>
+    <IsApproved>2</IsApproved>
+  </leaves>
+  <extraleaves ID="0">
+    <CreatorID>1</CreatorID>
+    <CreatorName>Selva</CreatorName>
+    <FromDate>2022-01-04&gt;</FromDate>
+    <ToDate>2022-01-05&gt;</ToDate>
+    <NoofDays>1</NoofDays>
+    <Reason>1</Reason>
+    <IsApproved>0</IsApproved>
+  </extraleaves>
+  <extraleaves ID="1">
+    <CreatorID>1</CreatorID>
+    <CreatorName>Selva</CreatorName>
+    <FromDate>2022-02-04&gt;</FromDate>
+    <ToDate>2022-02-05&gt;</ToDate>
+    <NoofDays>1</NoofDays>
+    <Reason>1</Reason>
+    <IsApproved>0</IsApproved>
+  </extraleaves>
+</LMS>

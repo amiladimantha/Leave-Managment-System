@@ -8,87 +8,239 @@ import {
   AppstoreAddOutlined,
   SettingOutlined,
   LogoutOutlined,
-  UserAddOutlined
+  UserAddOutlined,  
+  MenuFoldOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function AdminSidebar() {
-
   const [path, setPath] = useState(window.location.pathname);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  function toggle() {
+    setSidebarVisible(!sidebarVisible);
+    const sidebar = document.querySelector('.sidebar');
+  sidebar.style.width = !sidebarVisible ? '80px' : '250px';
+  }
 
   useEffect(() => {
     setPath(window.location.pathname);
   }, [window.location.pathname]);
-  
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${sidebarVisible ? "visible" : ""}`}>
       <div className="sidebarWrapper">
+        {!sidebarVisible && (
+          <button onClick={toggle} style={{ border: "none", background: "none", paddingLeft: 20 }}>
+          <CloseOutlined style={{ fontSize: 24, color: "#414141" }} />
+        </button>
+        )}
+
+        <div className="sidebarwrappersecondary">
+          {sidebarVisible && (
+            <button onClick={toggle} className="sidebarSecondaryButton">
+              {
+                <MenuFoldOutlined
+                  style={{
+                    fontSize: 24,
+                    color: "#0097E6",
+                    transform: "rotate(180deg)",
+                    padding: 5,
+                  }}
+                />
+              }
+            </button>
+          )}
+        </div>
         <div className="sidebarMenu">
           <ul className="sidebarList">
-          <Link to="/users/admin" className="link" activeClassName="active">
-  <li className="sidebarListItem">
-    <HomeOutlined className="iconStyle" />
-    Home
-  </li>
-</Link>
-
-            <Link to="/users/admin/users" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <UserOutlined className="iconStyle"/>
-              Users
-            </li>
-            </Link>
-            <Link to="/users/admin/adduser" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <UserAddOutlined className="iconStyle"/>
-              Add User
-            </li>
-            </Link>
-            <Link to="/users/admin/leaves" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <ProfileOutlined className="iconStyle"/>
-              Leaves
-            </li>
-            </Link>
-            <Link to="/users/admin/extraleaves" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <ProfileOutlined className="iconStyle"/>
-              Extra Leaves
-            </li>
-            </Link>
-            <Link to="/users/admin/applyleaves" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <FileAddOutlined className="iconStyle"/>
-              Apply Leave
-            </li>
-            </Link>
-            <Link to="/users/admin/applyextraleaves" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <AppstoreAddOutlined className="iconStyle"/>
-              Apply Extra Leave
-            </li>
-            </Link>
-            <Link to="/users/admin/myleaves" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <FileMarkdownOutlined className="iconStyle"/>
-              My Leaves
-            </li>
-            </Link>
-            <Link to="/users/admin/edituser" className="link" activeClassName="active">
-            <li className="sidebarListItem">
-              <SettingOutlined className="iconStyle"/>
-              Profile Settings
-            </li>
-            </Link> 
-            <Link to="/" className="link" >
-            <li className="sidebarListItem" >
-            <LogoutOutlined className="iconStyle"/>
-              Logout
-            </li>
-            </Link>       
+          <NavLink to="/users/admin" className="link">
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <HomeOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Home</span>}
+                </div>
+                {sidebarVisible && <HomeOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/users"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <UserOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Users</span>}
+                </div>
+                {sidebarVisible && <UserOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/adduser"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <UserAddOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Add User</span>}
+                </div>
+                {sidebarVisible && <UserAddOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/leaves"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <ProfileOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Leave</span>}
+                </div>
+                {sidebarVisible && <ProfileOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/extraleaves"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <ProfileOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Extra Leave</span>}
+                </div>
+                {sidebarVisible && <ProfileOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/applyleaves"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <FileAddOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Apply Leave</span>}
+                </div>
+                {sidebarVisible && <FileAddOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/applyextraleaves"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && (
+                    <AppstoreAddOutlined className="iconStyle" />
+                  )}
+                  {!sidebarVisible && (
+                    <span className="text">Apply Extra Leave</span>
+                  )}
+                </div>
+                {sidebarVisible && (
+                  <AppstoreAddOutlined className="iconStyle" />
+                )}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/myleaves"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && (
+                    <FileMarkdownOutlined className="iconStyle" />
+                  )}
+                  {!sidebarVisible && <span className="text">My Leaves</span>}
+                </div>
+                {sidebarVisible && (
+                  <FileMarkdownOutlined className="iconStyle" />
+                )}
+              </li>
+            </NavLink>
+            <NavLink
+              to="/users/admin/edituser"
+              className="link"
+              activeClassName="active"
+            >
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <SettingOutlined className="iconStyle" />}
+                  {!sidebarVisible && (
+                    <span className="text">Profile Settings</span>
+                  )}
+                </div>
+                {sidebarVisible && <SettingOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
+            <NavLink to="/" className="link">
+              <li
+                className={`sidebarListItem ${
+                  !sidebarVisible ? "" : "iconOnly"
+                }`}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  {!sidebarVisible && <LogoutOutlined className="iconStyle" />}
+                  {!sidebarVisible && <span className="text">Logout</span>}
+                </div>
+                {sidebarVisible && <LogoutOutlined className="iconStyle" />}
+              </li>
+            </NavLink>
           </ul>
         </div>
       </div>

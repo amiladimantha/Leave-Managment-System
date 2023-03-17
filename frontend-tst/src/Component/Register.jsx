@@ -52,7 +52,7 @@ export default function Register() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    const url = "https://localhost:7068/api/Registration/Registration";
+    const url = "https://localhost:7046/api/User/Registration";
 
     // encrypt the password
     // const key = CryptoJS.enc.Utf8.parse("encryptionIntVec");

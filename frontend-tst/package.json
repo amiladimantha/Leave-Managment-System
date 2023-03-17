@@ -14,6 +14,7 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "crypto-js": "^4.1.1",
+    "fontsource-poppins": "^4.0.0",
     "konva": "^8.4.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",

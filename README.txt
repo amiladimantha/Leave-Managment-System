@@ -80,3 +80,6 @@ values ('admin','admin@gmail.com','password', '0773581169', 1,1,0,'1989-01-09 13
 or register an account from ui and set the accounttype as 0 using an sql query, this will make that account as the admin
 
 #*******************************
+
+Admin email : admin@gmail.com
+Password : Admin123

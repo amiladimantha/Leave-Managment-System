@@ -23,7 +23,7 @@ const DataTable = () => {
   }, []);
 
   const getData = () => {
-    const url = "https://localhost:7068/api/ExtraLeaveList/ExtraLeaveList";
+    const url = "https://localhost:7046/api/ExtraLeave/ExtraLeaveList";
     axios
       .get(url, data)
       .then((result) => {
@@ -44,7 +44,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/DeleteExtraLeave/DeleteExtraLeave";
+    const url = "https://localhost:7046/api/ExtraLeave/DeleteExtraLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -65,7 +65,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/ApproveExtraLeave/ApproveExtraLeave";
+    const url = "https://localhost:7046/api/ExtraLeave/ApproveExtraLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -85,7 +85,7 @@ const DataTable = () => {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/RejectExtraLeave/RejectExtraLeave";
+    const url = "https://localhost:7046/api/ExtraLeave/RejectExtraLeave";
     axios
       .post(url, data)
       .then((result) => {
@@ -184,7 +184,7 @@ const DataTable = () => {
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
@@ -195,7 +195,7 @@ const DataTable = () => {
                 <th scope="col">Approvals</th>
                 <th scope="col">Rejections</th>
                 <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -270,7 +270,7 @@ const DataTable = () => {
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
                 <th scope="col">CreatorID</th>
                 <th scope="col">Creator Name</th>
                 <th scope="col">From Date</th>
@@ -279,7 +279,7 @@ const DataTable = () => {
                 <th scope="col">Reason</th>
                 <th scope="col">Is Approved</th>
                 <th scope="col">Approvals</th>
-                <th scope="col">Reject</th>
+                <th scope="col" style={{borderTopRightRadius: '20px'}}>Reject</th>
               </tr>
             </thead>
             <tbody>

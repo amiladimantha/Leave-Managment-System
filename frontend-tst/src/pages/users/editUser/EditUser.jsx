@@ -84,7 +84,7 @@ export default function EditUser() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    const url = "https://localhost:7068/api/EditProfile/EditProfile";
+    const url = "https://localhost:7046/api/Profile/EditProfile";
 
     const data = {
       ID: id,
@@ -109,7 +109,7 @@ export default function EditUser() {
   const handleSavePassword = (e) => {
     e.preventDefault();
     const url =
-      "https://localhost:7068/api/EditProfilePassword/EditProfilePassword";
+      "https://localhost:7046/api/Profile/EditProfilePassword";
 
     // encrypt the password
     const key = CryptoJS.enc.Utf8.parse("encryptionIntVec");
@@ -150,7 +150,7 @@ export default function EditUser() {
 
   const handleSaveEmail = (e) => {
     e.preventDefault();
-    const url = "https://localhost:7068/api/EditProfileEmail/EditProfileEmail";
+    const url = "https://localhost:7046/api/Profile/EditProfileEmail";
     const data = {
       ID: id,
       Email: email,
@@ -217,7 +217,7 @@ export default function EditUser() {
     formData.append("image", selectedFile);
     formData.append("ID", id);
   
-    fetch("https://localhost:7068/api/EditProfileImage/EditProfileImage", {
+    fetch("https://localhost:7046/api/Profile/EditProfileImage", {
       method: "POST",
       body: formData,
     })

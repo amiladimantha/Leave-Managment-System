@@ -10,8 +10,9 @@ const formItemLayout = {
   wrapperCol: { span: 15 },
 };
 const tailFormItemLayout = {
-  wrapperCol: { span: 5 },
+  wrapperCol: { span: 24, offset: 5 },
 };
+
 
 export default function AddUser() {
   useEffect(() => {
@@ -55,7 +56,7 @@ export default function AddUser() {
 
   const handleSave = (e) => {
     e.preventDefault();
-    const url = "https://localhost:7068/api/AddUser/AddUser";
+    const url = "https://localhost:7046/api/User/AddUser";
 
     const data = {
       Name: name,

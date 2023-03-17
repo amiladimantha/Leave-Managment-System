@@ -55,7 +55,7 @@ export default function UsersList() {
 
 
   const getData = () => {
-    const url = "https://localhost:7068/api/RegistrationList/RegistrationList";
+    const url = "https://localhost:7046/api/User/RegistrationList";
     axios
       .get(url, data)
       .then((result) => {
@@ -71,7 +71,7 @@ export default function UsersList() {
   };
 
   const getDataM = () => {
-    const url = "https://localhost:7068/api/RegistrationList/RegistrationListManager";
+    const url = "https://localhost:7046/api/User/RegistrationListManager";
     axios
       .get(url, datam)
       .then((result) => {
@@ -91,7 +91,7 @@ export default function UsersList() {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/DeleteUser/DeleteUser";
+    const url = "https://localhost:7046/api/User/DeleteUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -110,7 +110,7 @@ export default function UsersList() {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/BlockUser/BlockUser";
+    const url = "https://localhost:7046/api/User/BlockUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -173,7 +173,7 @@ export default function UsersList() {
     formWindow.handleSaveClick = () => {
       console.log(editData)
       axios
-        .post("https://localhost:7068/api/RegistrationList/UpdateRegistration", editData)
+        .post("https://localhost:7046/api/User/EditUser", editData)
         .then((result) => {
           if (result.status === 200) {
             setData((prevData) =>
@@ -203,7 +203,7 @@ export default function UsersList() {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/ActivateUser/ActivateUser";
+    const url = "https://localhost:7046/api/User/ActivateUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -222,7 +222,7 @@ export default function UsersList() {
     const data = {
       ID: id,
     };
-    const url = "https://localhost:7068/api/ApproveUser/ApproveUser";
+    const url = "https://localhost:7046/api/User/ApproveUser";
     axios
       .post(url, data)
       .then((result) => {
@@ -251,7 +251,7 @@ export default function UsersList() {
         <table className="datatable">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Password</th>
@@ -265,7 +265,7 @@ export default function UsersList() {
               <th scope="col">Activate</th>
               <th scope="col">Block</th>
               <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
+              <th scope="col" style={{borderTopRightRadius: '20px'}}>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -351,7 +351,7 @@ export default function UsersList() {
         <table className="datatable">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Password</th>
@@ -363,7 +363,7 @@ export default function UsersList() {
               <th scope="col">Account Type</th>
               <th scope="col">Approvals</th>             
               <th scope="col">Activate</th>
-              <th scope="col">Block</th>
+              <th scope="col" style={{borderTopRightRadius: '20px'}}>Block</th>
             </tr>
           </thead>
           <tbody>

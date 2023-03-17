@@ -1,0 +1,16 @@
+<LMS>
+<Registrations>
+	<Registration>
+		<ID>0</ID>
+		<Name>admin</Name>
+		<Email>admin@gmail.com</Email>
+		<Password>password</Password>
+	</Registration>
+	<Registration>
+		<ID>1</ID>
+		<Name>Selva</Name>
+		<Email>admin@gmail.com</Email>
+		<Password>password</Password>
+	</Registration>
+</Registrations>
+</LMS>

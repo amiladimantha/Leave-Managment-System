@@ -49,7 +49,7 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const url = "https://localhost:7068/api/Login/Login";
+    const url = "https://localhost:7046/api/User/Login";
 
     // encrypt the password
     // const key = CryptoJS.enc.Utf8.parse("encryptionIntVec");

@@ -76,22 +76,22 @@
 
 .info-card-1{
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(15, 82, 198, 0.629);
+    border: 4px solid #0097E6;
 }
 
 .info-card-2{
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(21, 251, 44, 0.629);
+    border: 4px solid #15fb2ca0;
 }
 
 .info-card-3{
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(198, 15, 15, 0.644);
+    border: 4px solid #c60f0fa4;
 }
 
 .info-card-4{
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(247, 251, 21, 0.67);
+    border: 4px solid #f7fb15ab;
 }
 
 .title1{
@@ -102,3 +102,11 @@
     margin-top:40px;
 }
 
+
+@media screen and (max-width: 767px) {
+    .ant-row {
+      display: block;
+      flex-wrap: wrap;
+    }
+  }
+  
