@@ -1,12 +1,6 @@
 import React, { useEffect, useState, Component } from "react";
-import { Space, Table, Tag, Button, Result, Modal, message } from "antd";
+import { Space, Table, Tag, Button, Result, Modal, message, Pagination } from "antd";
 import "./leaves.css";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  UserAddOutlined,
-  CheckOutlined,
-} from "@ant-design/icons";
 import axios from "axios";
 
 const DataTable = () => {
@@ -14,6 +8,8 @@ const DataTable = () => {
   const [type, setAccountType] = useState();  
   const [editData, setEditData] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const approved = ["Pending", "Yes", "No" ];
 
@@ -171,6 +167,47 @@ const DataTable = () => {
     };
   };
 
+  const handleChangePage = (page, pageSize) => {
+    setCurrentPage(page);
+  };
+
+  const handlePageSizeChange = (current, size) => {
+    setPageSize(size);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentData = data.slice(startIndex, endIndex);
+
+  const [sortBy, setSortBy] = useState({
+    column: "id",
+    order: "asc",
+  });
+
+  const handleSort = (column) => {
+    const order =
+      sortBy.column === column && sortBy.order === "asc" ? "desc" : "asc";
+    setSortBy({ column, order });
+  };
+
+  const sortedData = data.sort((a, b) => {
+    const ascending = sortBy.order === "asc" ? 1 : -1;
+    const descending = sortBy.order === "desc" ? 1 : -1;
+    if (a[sortBy.column] < b[sortBy.column]) {
+      return ascending;
+    }
+    if (a[sortBy.column] > b[sortBy.column]) {
+      return descending;
+    }
+    return 0;
+  });
+
+  const getSortArrow = (column) => {
+    if (sortBy.column === column) {
+      return sortBy.order === "asc" ? "▲" : "▼";
+    }
+    return "";
+  };
 
   return (
     <>
@@ -180,18 +217,19 @@ const DataTable = () => {
           return (
             <div>
       
-      {data ? (
+      {currentData ? (
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
-                <th scope="col">CreatorID</th>
-                <th scope="col">Creator Name</th>
-                <th scope="col">From Date</th>
-                <th scope="col">To Date</th>
-                <th scope="col">No of Days</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Is Approved</th>
+              <th scope="col" style={{borderTopLeftRadius: '20px'}} onClick={() => handleSort("id")}>
+                        ID {getSortArrow("id")}</th>
+                <th scope="col" onClick={() => handleSort("creatorID")}>CreatorID {getSortArrow("creatorID")}</th>
+                <th scope="col" onClick={() => handleSort("creatorName")}>Creator Name {getSortArrow("creatorName")}</th>
+                <th scope="col" onClick={() => handleSort("fromDate")}>From Date {getSortArrow("fromDate")}</th>
+                <th scope="col" onClick={() => handleSort("toDate")}>To Date {getSortArrow("toDate")}</th>
+                <th scope="col" onClick={() => handleSort("noofDays")}>No of Days {getSortArrow("noofDays")}</th>
+                <th scope="col" onClick={() => handleSort("reason")}>Reason {getSortArrow("reason")}</th>
+                <th scope="col" onClick={() => handleSort("isApproved")}>Is Approved {getSortArrow("isApproved")}</th>
                 <th scope="col">Approvals</th>
                 <th scope="col">Rejections</th>
                 <th scope="col">Edit</th>
@@ -199,7 +237,7 @@ const DataTable = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((val, index) => {
+              {currentData.map((val, index) => {
                 return (
                   <tr>
                     <td>{val.id}</td>
@@ -266,24 +304,25 @@ const DataTable = () => {
           return (
             <div>
       
-      {data ? (
+      {currentData ? (
           <table className="datatable">
             <thead>
               <tr>
-                <th scope="col" style={{borderTopLeftRadius: '20px'}}>ID</th>
-                <th scope="col">CreatorID</th>
-                <th scope="col">Creator Name</th>
-                <th scope="col">From Date</th>
-                <th scope="col">To Date</th>
-                <th scope="col">No of Days</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Is Approved</th>
-                <th scope="col">Approvals</th>
+              <th scope="col" style={{borderTopLeftRadius: '20px'}} onClick={() => handleSort("id")}>
+                        ID {getSortArrow("id")}</th>
+                <th scope="col" onClick={() => handleSort("creatorId")}>CreatorID {getSortArrow("creatorId")}</th>
+                <th scope="col" onClick={() => handleSort("creatorName")}>Creator Name {getSortArrow("creatorName")}</th>
+                <th scope="col" onClick={() => handleSort("fromDate")}>From Date {getSortArrow("fromDate")}</th>
+                <th scope="col" onClick={() => handleSort("toDate")}>To Date {getSortArrow("toDate")}</th>
+                <th scope="col" onClick={() => handleSort("noofDays")}>No of Days {getSortArrow("noofDays")}</th>
+                <th scope="col" onClick={() => handleSort("reason")}>Reason {getSortArrow("reason")}</th>
+                <th scope="col" onClick={() => handleSort("isApproved")}>Is Approved {getSortArrow("isApproved")}</th>
+                <th scope="col">Approvals {getSortArrow("approvals")}</th>
                 <th scope="col" style={{borderTopRightRadius: '20px'}}>Reject</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((val, index) => {
+              {currentData.map((val, index) => {
                 return (
                   <tr>
                     <td>{val.id}</td>
@@ -331,7 +370,18 @@ const DataTable = () => {
         } 
       })()}
 </div>
-
+<br />
+<Pagination
+          current={currentPage}
+          pageSize={pageSize}
+          total={data.length}
+          onChange={handleChangePage}
+          onShowSizeChange={handlePageSizeChange}
+          showSizeChanger={true}
+          pageSizeOptions={[10, 20, 50, 100]}
+          style={{ textAlign: "center" }}
+        />
+<br />
 
 
 
