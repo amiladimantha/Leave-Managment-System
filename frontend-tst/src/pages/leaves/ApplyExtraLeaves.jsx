@@ -186,6 +186,7 @@ export default function ApplyExtraLeaves() {
 
   return (
     <>
+    <h3>Apply Extra Leave</h3>
       <Row>
         <Form
           style={{ width: "100%" }}

@@ -10,7 +10,7 @@ import {
   UploadOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
-import { DatePicker, Input, Button, Form, message } from "antd";
+import { DatePicker, Input, Button, Form, message, Row, Col } from "antd";
 import CryptoJS from "crypto-js";
 
 const formItemLayout = {
@@ -312,12 +312,9 @@ export default function EditUser() {
   }
 
   return (
-    <div className="user">
-      <div className="userItemContainer">
-        <h1 className="userTitle">Edit User</h1>
-        {/* <button className="userAddButton">Create</button> */}
-      </div>
-      <div className="userContainer">
+    <>  
+      <Row gutter={[16, 16]}>
+        <Col xs={24} sm={24} md={24} lg={12}>
         <div className="userShow">
           <div className="userShowTop">
             <img
@@ -363,7 +360,8 @@ export default function EditUser() {
             </div>
           </div>
         </div>
-
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={12}>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit Details</span>
           <br />
@@ -496,9 +494,10 @@ export default function EditUser() {
             </Form.Item>
           </Form>
         </div>
-      </div>
-
-      <div className="userContainer">
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} sm={24} md={24} lg={12}>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit Password</span>
           <Form
@@ -566,7 +565,8 @@ export default function EditUser() {
             </Form.Item>
           </Form>
         </div>
-
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={12}>
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit Email</span>
           <Form
@@ -606,17 +606,19 @@ export default function EditUser() {
             </Form.Item>
           </Form>
         </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="userContainer">
-        <div className="userShow">
+      <Row gutter={[16, 16]}>
+         <Col xs={24} sm={24} md={24} lg={12}>
+          <div className="userShow">
           <div className="userUpdateRight">
             <div className="userUpdateUpload">
               {values.imageSrc && (
                 <img
                   src={values.imageSrc}
                   alt="Preview"
-                  style={{ maxWidth: "100%", height: "auto" }}
+                  style={{ maxWidth: "40%", height: "40%" }}
                 />
               )}
 
@@ -642,7 +644,10 @@ export default function EditUser() {
             </Button>
           </div>
         </div>
-      </div>
-    </div>
+          </Col>      
+      </Row>
+
+
+    </>
   );
 }

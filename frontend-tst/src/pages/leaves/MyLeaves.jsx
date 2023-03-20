@@ -236,7 +236,7 @@ const DataTable = () => {
                 <th scope="col" onClick={() => handleSortTable1("fromDate")}>From Date {getSortArrowTable1("fromDate")}</th>
                 <th scope="col" onClick={() => handleSortTable1("toDate")}>To Date {getSortArrowTable1("toDate")}</th>
                 <th scope="col" onClick={() => handleSortTable1("noofDays")}>No of Days {getSortArrowTable1("noofDays")}</th>
-                <th scope="col" onClick={() => handleSortTable1("type")}>Leave Type {getSortArrowTable1("type")}</th>
+                <th scope="col" onClick={() => handleSortTable1("leaveType")}>Leave Type {getSortArrowTable1("leaveType")}</th>
                 <th scope="col" style={{borderTopRightRadius: '20px'}} onClick={() => handleSortTable1("isApproved")}>Is Approved {getSortArrowTable1("isApproved")}</th>
               </tr>
             </thead>

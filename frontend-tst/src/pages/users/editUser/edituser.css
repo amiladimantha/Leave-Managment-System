@@ -153,3 +153,13 @@
     color: red;
     background-color: white;
 }
+
+@media only screen and (min-width: 768px) {
+    .user {
+      flex-direction: row;
+    }
+  
+    .userContainer {
+      flex: 1;
+    }
+  }

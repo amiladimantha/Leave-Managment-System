@@ -223,8 +223,8 @@ const DataTable = () => {
 {(() => {
         if (type === "0") {
           return (
-            <div>
-      
+            <div>      
+    <h3>Leaves</h3>
       {currentData ? (
           <table className="datatable">
             <thead>
@@ -236,7 +236,7 @@ const DataTable = () => {
                 <th scope="col" onClick={() => handleSort("fromDate")}>From Date {getSortArrow("fromDate")}</th>
                 <th scope="col" onClick={() => handleSort("toDate")}>To Date {getSortArrow("toDate")}</th>
                 <th scope="col" onClick={() => handleSort("noofDays")}>No of Days {getSortArrow("noofDays")}</th>
-                <th scope="col" onClick={() => handleSort("type")}>Leave Type {getSortArrow("type")}</th>
+                <th scope="col" onClick={() => handleSort("leaveType")}>Leave Type {getSortArrow("leaveType")}</th>
                 <th scope="col" onClick={() => handleSort("isApproved")}>Is Approved {getSortArrow("isApproved")}</th>
                 <th scope="col">Approvals</th>
                 <th scope="col">Rejections</th>
@@ -311,7 +311,7 @@ const DataTable = () => {
         } else {
           return (
             <div>
-      
+      <h3>Leaves</h3>
       {currentData ? (
           <table className="datatable">
             <thead>
@@ -323,7 +323,7 @@ const DataTable = () => {
                 <th scope="col" onClick={() => handleSort("fromDate")}>From Date {getSortArrow("fromDate")}</th>
                 <th scope="col" onClick={() => handleSort("toDate")}>To Date {getSortArrow("toDate")}</th>
                 <th scope="col" onClick={() => handleSort("noofDays")}>No of Days {getSortArrow("noofDays")}</th>
-                <th scope="col" onClick={() => handleSort("type")}>Leave Type {getSortArrow("type")}</th>
+                <th scope="col" onClick={() => handleSort("leaveType")}>Leave Type {getSortArrow("leaveType")}</th>
                 <th scope="col" onClick={() => handleSort("isApproved")}>Is Approved {getSortArrow("isApproved")}</th>
                 <th scope="col">Approvals </th>
                 <th scope="col" style={{borderTopRightRadius: '20px'}}>Rejections</th>

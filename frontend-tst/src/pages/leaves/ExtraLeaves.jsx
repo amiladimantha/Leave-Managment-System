@@ -216,7 +216,7 @@ const DataTable = () => {
         if (type === "0") {
           return (
             <div>
-      
+      <h3>Extra Leaves</h3>
       {currentData ? (
           <table className="datatable">
             <thead>
@@ -303,7 +303,7 @@ const DataTable = () => {
         } else {
           return (
             <div>
-      
+      <h3>Extra Leaves</h3>
       {currentData ? (
           <table className="datatable">
             <thead>

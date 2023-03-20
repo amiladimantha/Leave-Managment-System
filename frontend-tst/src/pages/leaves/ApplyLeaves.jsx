@@ -136,7 +136,10 @@ const sickLeaves = data.filter((val) =>
 
   return (
     <>
+    <h3>Apply Leave</h3>
    <Row>
+    
+
         <Form
           style={{ width: "100%" }}
           {...formItemLayout}
