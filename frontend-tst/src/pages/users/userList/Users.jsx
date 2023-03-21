@@ -2,12 +2,13 @@ import React, { useEffect, useState, Component } from "react";
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import Decryption from "../../../Component/Decryption";
-import ResponsiveSidebar from "../../../Component/sidebar/Rsidebar";
+import Encryption from "../../../Component/Encryption";
 import {
   Space,
   Table,
   Tag,
   Button,
+  Input,
   DatePicker,
   Result,
   Modal,
@@ -16,12 +17,6 @@ import {
   Pagination,
 } from "antd";
 import "./users.css";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  UserAddOutlined,
-  CheckOutlined,
-} from "@ant-design/icons";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
@@ -30,7 +25,7 @@ export default function UsersList() {
   const [datam, setDataM] = useState([]);
   const [type, setAccountType] = useState();
   const [editData, setEditData] = useState({});
-  const [showForm, setShowForm] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [currentPage2, setCurrentPage2] = useState(1);
@@ -45,22 +40,6 @@ export default function UsersList() {
     getDataM();
     setAccountType(localStorage.getItem("accountType"));
   }, []);
-
-  //   const decryptedPassword = (password) => {
-  //     const key = CryptoJS.enc.Utf8.parse("encryptionIntVec");
-  //     const iv = CryptoJS.enc.Utf8.parse("aesEncryptionKey");
-  //     const decrypted = CryptoJS.AES.decrypt(
-  //         password,
-  //         key,
-  //         {
-  //             keySize: 128 / 8,
-  //             iv: iv,
-  //             mode: CryptoJS.mode.CBC,
-  //             padding: CryptoJS.pad.Pkcs7
-  //         }
-  //     );
-  //     return decrypted.toString(CryptoJS.enc.Utf8);
-  // }
 
   const getData = () => {
     const url = "https://localhost:7046/api/User/RegistrationList";
@@ -132,81 +111,84 @@ export default function UsersList() {
       });
   };
 
-  const handleEditClick = (val) => {
-    setEditData(val);
-    const formWindow = window.open("", "formWindow", "height=500,width=800");
-    formWindow.document.body.innerHTML = `
-      <div>
-         <form>
-          <label>
-            ID:
-            <input type="text" value=${val.id} disabled />
-          </label>
-          <label>
-            Name:
-            <input type="text" value=${val.name} onChange={handleFormChange} />
-          </label>
-          <label>
-            Email:
-            <input type="text" value=${val.email} onChange={handleFormChange} />
-          </label>
-          <label>
-            Password:
-            <input type="text" value=${Decryption(
-              val.password
-            )} onChange={handleFormChange} />
-          </label>
-          <label>
-            Phone:
-            <input type="text" value=${val.phone} onChange={handleFormChange} />
-          </label>
-          <label>
-            Birthday:
-            <input type="date" value=${
-              val.birthday
-            } onChange={handleFormChange} />
-          </label>
-          <label>
-            Address:
-            <input type="text" value=${
-              val.address
-            } onChange={handleFormChange} />
-          </label>
-        </form>
-        <button onClick="handleSaveClick()">Save</button>
-        <button onClick="handleCancelClick()">Cancel</button> 
-      </div>
-    `;
-    formWindow.handleFormChange = (event) => {
-      setEditData({ ...editData, [event.target.name]: event.target.value });
-    };
+//   const handleEditClick = (val, props) => {
+//     setEditData(val);
+//     const formWindow = window.open("", "formWindow", "height=500,width=800");
+//     formWindow.document.body.innerHTML = `
+//       <div>
+//          <form>
+//           <label>
+//             ID:
+//             <input type="text" value=${val.id} disabled />
+//           </label>
+//           <label>
+//             Name:
+//             <input type="text" value=${val.name} onChange=handleFormChange />
+//           </label>
+//           <label>
+//             Email:
+//             <input type="text" value=${val.email} onChange=handleFormChange />
+//           </label>
+//           <label>
+//             Password:
+//             <input type="text" value=${Decryption(
+//               val.password
+//             )} onChange=handleFormChange />
+//           </label>
+//           <label>
+//             Phone:
+//             <input type="text" value=${val.phone} onChange=handleFormChange />
+//           </label>
+//           <label>
+//             Birthday:
+//             <input type="date" value=${
+//               val.birthday
+//             } onChange=handleFormChange />
+//           </label>
+//           <label>
+//             Address:
+//             <input type="text" value=${
+//               val.address
+//             } onChange=handleFormChange />
+//           </label>
+//         </form>
+//         <button onClick="handleSaveClick()">Save</button>
+//         <button onClick="handleCancelClick()">Cancel</button> 
+//       </div>
+//     `;
+//     <UsersList setEditData={setEditData} editData={editData} />
 
-    formWindow.handleSaveClick = () => {
-      console.log(editData);
-      axios
-        .post("https://localhost:7046/api/User/EditUser", editData)
-        .then((result) => {
-          if (result.status === 200) {
-            setData((prevData) =>
-              prevData.map((item) => {
-                if (item.id === editData.id) {
-                  return editData;
-                }
-                return item;
-              })
-            );
-            formWindow.close();
-          }
-        })
-        .catch((error) => {
-          message.error(error);
-        });
-    };
+//     formWindow.handleFormChange = (event) => {
+//       props.setEditData({ ...props.editData, [event.target.name]: event.target.value });
+//     };
+    
 
-    formWindow.handleCancelClick = () => {
-      formWindow.close();
-    };
-  };
+//     formWindow.handleSaveClick = () => {
+//       console.log(val);
+//       axios
+//         .post("https://localhost:7046/api/User/EditUser", val)
+//         .then((result) => {
+//           if (result.status === 200) {
+//             setData((prevData) =>
+//               prevData.map((item) => {
+//                 if (item.id === val.id) {
+//                   return val;
+//                 }
+//                 return item;
+//               })
+//             );
+//             formWindow.close();
+//           }
+//         })
+//         .catch((error) => {
+//           message.error(error);
+//         });
+//     };
+
+//   formWindow.handleCancelClick = () => {
+//     formWindow.close();
+//   };
+// };
 
   const handleActivate = (e, id) => {
     const data = {
@@ -328,6 +310,52 @@ export default function UsersList() {
     }
     return "";
   };
+
+
+  const handleEditClick = (val) => {
+    setEditData(val);
+    setVisible(true);
+  };
+
+  const [id, setID] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [phone, setPhone] = useState();
+  const [birthday, setBirthday] = useState();
+  const [address, setAddress] = useState();
+
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    // const encryptedPassword = Encryption.encrypt(password);
+
+    // const editData = {
+    //     ID: id,
+    //     Name: name,
+    //     Email: email,
+    //     Password: encryptedPassword,
+    //     Phone: phone,
+    //     Address:address,
+    //     Birthday:birthday,
+    // };
+
+    const url = "https://localhost:7046/api/User/EditUser";
+    axios
+      .post(url, editData)
+      .then((result) => {
+        const data = result.data;
+        if (data.statusCode === 200) {
+          message.success("User Edited Successfully");
+        } else {
+          message.error("User Editing Failed");
+        }
+        setVisible(false);
+      })
+      .catch((error) => {
+        message.error(error);
+      });
+  };
+  
   
 
   return (
@@ -578,6 +606,105 @@ export default function UsersList() {
         style={{ textAlign: "center" }}
       />
       <br />
+
+
+      <Modal
+  title="Edit Record"
+  visible={visible}
+  onCancel={() => setVisible(false)}
+  footer={null}
+>
+  <form>
+    <div className="form-group">
+      <label htmlFor="id">ID</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="id"
+        value={editData.id}
+        disabled
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Name</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="name"
+        value={editData.name}
+        onChange={(e) =>
+          setEditData({ ...editData, name: e.target.value })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Email</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="email"
+        value={editData.email}
+        onChange={(e) =>
+          setEditData({ ...editData, email: e.target.value })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Password</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="password"
+        value={editData.password}
+        onChange={(e) =>
+          setEditData({ ...editData, password: e.target.value })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Phone</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="phone"
+        value={editData.phone}
+        onChange={(e) =>
+          setEditData({ ...editData, phone: e.target.value })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Birthday</label>
+      <DatePicker
+      style={{ width: "100%" }}
+        type="date"
+        className="form-control"
+        id="birthday"
+        placeholder="Choose a birthday"
+        onChange={(date) =>
+          setEditData({ ...editData, birthday: date })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Address</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="address"
+        value={editData.address}
+        onChange={(e) =>
+          setEditData({ ...editData, address: e.target.value })
+        }
+      />
+    </div>
+    <br />
+    <button type="submit" className="userEdit" onClick={handleSaveClick}>
+      Save
+    </button>
+  </form>
+</Modal>
+
     </>
   );
 }

@@ -202,24 +202,24 @@ const DataTable = () => {
 
 <Row gutter={[16, 16]}>
       
-    <Col xs={24} sm={12} md={6}>
+    <Col xs={24} sm={24} md={12} lg={6}>
       <Card className="info-card-2" title="Approved Leaves" >
-      <p style={{fontSize:'40px'}}>{approvedCount}</p>
+      <p style={{fontSize:'44px'}}>{approvedCount}</p>
       </Card>
     </Col>
-    <Col xs={24} sm={12} md={6}>
+    <Col xs={24} sm={24} md={12} lg={6}>
       <Card className="info-card-3" title="Rejected Leaves" >
-        <p style={{fontSize:'40px'}}>{rejectedCount}</p>
+        <p style={{fontSize:'44px'}}>{rejectedCount}</p>
       </Card>
     </Col>
-    <Col xs={24} sm={12} md={6}>
+    <Col xs={24} sm={24} md={12} lg={6}>
       <Card className="info-card-4" title="Pending Approvals" >
-        <p style={{fontSize:'40px'}}>{pendingCount}</p>
+        <p style={{fontSize:'44px'}}>{pendingCount}</p>
       </Card>
     </Col>
-    <Col xs={24} sm={12} md={6}>
+    <Col xs={24} sm={24} md={12} lg={6}>
       <Card className="info-card-1" title="Total Leaves" >
-        <p style={{fontSize:'40px'}}>{data.length + dataex.length}</p>
+        <p style={{fontSize:'44px'}}>{data.length + dataex.length}</p>
       </Card>
     </Col>
   </Row>

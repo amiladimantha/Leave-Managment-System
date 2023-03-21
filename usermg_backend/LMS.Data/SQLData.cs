@@ -125,7 +125,7 @@ namespace LMS.Data
         }
         public override bool EditUser(EditUser editUser)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Registration SET Name = '" + editUser.Name + "', Phone = '" + editUser.Phone + "', Birthday = '" + editUser.Birthday + "', Address = '" + editUser.Address + "',Email = '" + editUser.Email + "',Password = '"+ editUser.Password +"' ", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE Registration SET Name = '" + editUser.Name + "', Phone = '" + editUser.Phone + "', Birthday = '" + editUser.Birthday + "', Address = '" + editUser.Address + "',Email = '" + editUser.Email + "',Password = '"+ editUser.Password + "'  WHERE ID = '" + editUser.ID + "' ", connection);
             connection.Open();
             int i = cmd.ExecuteNonQuery();
             connection.Close();

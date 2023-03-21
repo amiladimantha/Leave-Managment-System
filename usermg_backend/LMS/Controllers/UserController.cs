@@ -289,7 +289,7 @@ namespace LMS.Controllers
             if (ret)
             {
                 response.StatusCode = 200;
-                response.StatusMessage = "User Edited Successful!";
+                response.StatusMessage = "User Edited Successfully!";
             }
             else
             {
