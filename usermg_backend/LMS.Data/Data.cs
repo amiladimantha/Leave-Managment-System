@@ -109,6 +109,10 @@ namespace LMS.Data
         {
             return false;
         }
+        public virtual bool EditLeave(EditLeave editLeave)
+        {
+            return false;
+        }
 
         public virtual bool ApplyExtraLeave(ApplyExtraLeave applyExtraLeave)
         {
@@ -123,6 +127,10 @@ namespace LMS.Data
             return false;
         }
         public virtual bool DeleteExtraLeave(DeleteExtraLeave deleteExtraLeave)
+        {
+            return false;
+        }
+        public virtual bool EditExtraLeave(EditExtraLeave editExtraLeave)
         {
             return false;
         }

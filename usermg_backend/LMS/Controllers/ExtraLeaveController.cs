@@ -190,5 +190,27 @@ namespace LMS.Controllers
 
         }
 
+        [HttpPost]
+        [Route("EditExtraLeave")]
+        public Response EditExtraLeave(EditExtraLeave editExtraLeave)
+        {
+
+            Response response = new Response();
+            bool ret = dataAccess.EditExtraLeave(editExtraLeave);
+
+            if (ret)
+            {
+                response.StatusCode = 200;
+                response.StatusMessage = "Extra Leave Edited Successful!";
+            }
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage = "Extra Leave Editing Failed!";
+            }
+            return response;
+
+        }
+
     }
 }

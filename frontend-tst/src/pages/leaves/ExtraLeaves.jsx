@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-import { Space, Table, Tag, Button, Result, Modal, message, Pagination } from "antd";
+import { Space, Table, Tag, Button, Result,Select, Modal, message, Pagination, Form, Input, DatePicker } from "antd";
 import "./leaves.css";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ const DataTable = () => {
   const [type, setAccountType] = useState();  
   const [editData, setEditData] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
@@ -97,75 +98,75 @@ const DataTable = () => {
   };
 
 
-  const handleEditClick = (val) => {
-    setEditData(val);
-    const formWindow = window.open("", "formWindow", "height=500,width=800");
-    formWindow.document.body.innerHTML = `
-      <div>
-        <form>
-          <label>
-            ID:
-            <input type="text" value=${val.id} disabled />
-          </label>
-          <label>
-            Creator ID:
-            <input type="text" value=${val.creatorID} disabled />
-          </label>
-          <label>
-            Creator Name:
-            <input type="text" value=${val.creatorName} disabled />
-          </label>
-          <label>
-            From Date:
-            <input type="date" value=${val.fromDate} onChange={handleFormChange} />
-          </label>
-          <label>
-            To Date:
-            <input type="date" value=${val.toDate} onChange={handleFormChange} />
-          </label>
-          <label>
-            No of Days:
-            <input type="date" value=${val.noofDays} onChange={handleFormChange} />
-          </label>
-          <label>
-            Reason:
-            <input type="text" value=${val.reason} onChange={handleFormChange} />
-          </label>
-        </form>
-        <button onClick="handleSaveClick()">Save</button>
-        <button onClick="handleCancelClick()">Cancel</button>
-      </div>
-    `;
-    formWindow.handleFormChange = (event) => {
-      setEditData({ ...editData, [event.target.name]: event.target.value });
-    };
+  // const handleEditClick = (val) => {
+  //   setEditData(val);
+  //   const formWindow = window.open("", "formWindow", "height=500,width=800");
+  //   formWindow.document.body.innerHTML = `
+  //     <div>
+  //       <form>
+  //         <label>
+  //           ID:
+  //           <input type="text" value=${val.id} disabled />
+  //         </label>
+  //         <label>
+  //           Creator ID:
+  //           <input type="text" value=${val.creatorID} disabled />
+  //         </label>
+  //         <label>
+  //           Creator Name:
+  //           <input type="text" value=${val.creatorName} disabled />
+  //         </label>
+  //         <label>
+  //           From Date:
+  //           <input type="date" value=${val.fromDate} onChange={handleFormChange} />
+  //         </label>
+  //         <label>
+  //           To Date:
+  //           <input type="date" value=${val.toDate} onChange={handleFormChange} />
+  //         </label>
+  //         <label>
+  //           No of Days:
+  //           <input type="date" value=${val.noofDays} onChange={handleFormChange} />
+  //         </label>
+  //         <label>
+  //           Reason:
+  //           <input type="text" value=${val.reason} onChange={handleFormChange} />
+  //         </label>
+  //       </form>
+  //       <button onClick="handleSaveClick()">Save</button>
+  //       <button onClick="handleCancelClick()">Cancel</button>
+  //     </div>
+  //   `;
+  //   formWindow.handleFormChange = (event) => {
+  //     setEditData({ ...editData, [event.target.name]: event.target.value });
+  //   };
        
-    formWindow.handleSaveClick = () => {
-      axios
-        .post("https://localhost:7068/api/EditUserDetails/EditUserDetails", editData)
-        .then((result) => {
-          if (result.status === 200) {
-            setData((prevData) =>
-              prevData.map((item) => {
-                if (item.id === editData.id) {
-                  return editData;
-                }
-                return item;
-              })
-            );
-            formWindow.close();
-            console.log(editData)
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
+  //   formWindow.handleSaveClick = () => {
+  //     axios
+  //       .post("https://localhost:7068/api/EditUserDetails/EditUserDetails", editData)
+  //       .then((result) => {
+  //         if (result.status === 200) {
+  //           setData((prevData) =>
+  //             prevData.map((item) => {
+  //               if (item.id === editData.id) {
+  //                 return editData;
+  //               }
+  //               return item;
+  //             })
+  //           );
+  //           formWindow.close();
+  //           console.log(editData)
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   };
     
-    formWindow.handleCancelClick = () => {
-      formWindow.close();
-    };
-  };
+  //   formWindow.handleCancelClick = () => {
+  //     formWindow.close();
+  //   };
+  // };
 
   const handleChangePage = (page, pageSize) => {
     setCurrentPage(page);
@@ -207,6 +208,50 @@ const DataTable = () => {
       return sortBy.order === "asc" ? "▲" : "▼";
     }
     return "";
+  };
+
+  const handleEditClick = (val) => {
+    setEditData(val);
+    setVisible(true);
+  };
+
+  const [id, setID] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [phone, setPhone] = useState();
+  const [birthday, setBirthday] = useState();
+  const [address, setAddress] = useState();
+
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    // const encryptedPassword = Encryption.encrypt(password);
+
+    // const editData = {
+    //     ID: id,
+    //     Name: name,
+    //     Email: email,
+    //     Password: encryptedPassword,
+    //     Phone: phone,
+    //     Address:address,
+    //     Birthday:birthday,
+    // };
+
+    const url = "https://localhost:7046/api/ExtraLeave/EditExtraLeave";
+    axios
+      .post(url, editData)
+      .then((result) => {
+        const data = result.data;
+        if (data.statusCode === 200) {
+          message.success("Extra Leave Edited Successfully");
+        } else {
+          message.error("Extra Leave Editing Failed");
+        }
+        setVisible(false);
+      })
+      .catch((error) => {
+        message.error(error);
+      });
   };
 
   return (
@@ -382,6 +427,113 @@ const DataTable = () => {
           style={{ textAlign: "center" }}
         />
 <br />
+
+<Modal
+  title="Edit Record"
+  open={visible}
+  onCancel={() => setVisible(false)}
+  footer={null}
+>
+  <Form>
+    <div className="form-group">
+      <label htmlFor="id">ID</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="id"
+        value={editData.id}
+        disabled
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Creator ID</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="creatorID"
+        value={editData.creatorID}
+        disabled
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Creator Name</label>
+      <Input
+        type="text"
+        className="form-control"
+        id="creatorName"
+        value={editData.creatorName}
+        disabled
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">From Date</label>
+      <DatePicker
+      style={{ width: "100%" }}
+        type="date"
+        className="form-control"
+        id="fromDate"
+        placeholder="Choose a Starting Date"
+        onChange={(date) =>
+          setEditData({ ...editData, fromDate: date })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">To Date</label>
+      <DatePicker
+      style={{ width: "100%" }}
+        type="date"
+        className="form-control"
+        id="toDate"
+        placeholder="Choose an Ending Date"
+        onChange={(date) =>
+          setEditData({ ...editData, toDate: date })
+        }
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="noofDays">No of Days</label>
+      <Select
+              style={{ width: "100%" }}
+              label="Days"
+              placeholder="Select no of Days"
+              onChange={(value) => setEditData({...editData, noofDays: value})
+            }
+            >
+              <Select.Option value={1}>1 day</Select.Option>
+              <Select.Option value={2}>2 days</Select.Option>
+              <Select.Option value={3}>3 days</Select.Option>
+              <Select.Option value={4}>4 days</Select.Option>
+              <Select.Option value={5}>5 days</Select.Option>
+              <Select.Option value={6}>6 days</Select.Option>
+              <Select.Option value={7}>7 days</Select.Option>
+              <Select.Option value={8}>8 days</Select.Option>
+              <Select.Option value={9}>9 days</Select.Option>
+              <Select.Option value={10}>10 days</Select.Option>
+              <Select.Option value={11}>11 days</Select.Option>
+              <Select.Option value={12}>12 days</Select.Option>
+              <Select.Option value={13}>13 days</Select.Option>
+              <Select.Option value={14}>14 days</Select.Option>
+            </Select>
+    </div>
+    <div className="form-group">
+      <label htmlFor="name">Reason</label>
+      <Input.TextArea
+        type="text"
+        className="form-control"
+        id="reason"
+        value={editData.reason}
+        onChange={(e) =>
+          setEditData({ ...editData, reason: e.target.value })
+        }
+      />
+    </div>
+    <br />
+    <button type="submit" className="userEdit" onClick={handleSaveClick}>
+      Save
+    </button>
+  </Form>
+</Modal>
 
 
 

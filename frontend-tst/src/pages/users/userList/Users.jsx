@@ -9,6 +9,7 @@ import {
   Tag,
   Button,
   Input,
+  Form,
   DatePicker,
   Result,
   Modal,
@@ -610,11 +611,11 @@ export default function UsersList() {
 
       <Modal
   title="Edit Record"
-  visible={visible}
+  open={visible}
   onCancel={() => setVisible(false)}
   footer={null}
 >
-  <form>
+  <Form>
     <div className="form-group">
       <label htmlFor="id">ID</label>
       <Input
@@ -702,7 +703,7 @@ export default function UsersList() {
     <button type="submit" className="userEdit" onClick={handleSaveClick}>
       Save
     </button>
-  </form>
+  </Form>
 </Modal>
 
     </>

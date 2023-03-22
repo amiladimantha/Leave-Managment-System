@@ -191,5 +191,27 @@ namespace LMS.Controllers
 
         }
 
+        [HttpPost]
+        [Route("EditLeave")]
+        public Response EditLeave(EditLeave editLeave)
+        {
+
+            Response response = new Response();
+            bool ret = dataAccess.EditLeave(editLeave);
+
+            if (ret)
+            {
+                response.StatusCode = 200;
+                response.StatusMessage = "Leave Edited Successful!";
+            }
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage = "Leave Editing Failed!";
+            }
+            return response;
+
+        }
+
     }
 }

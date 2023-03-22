@@ -164,6 +164,17 @@ namespace LMS.Data
                 return true;
             return false;
         }
+        public override bool EditLeave(EditLeave editLeave)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE Leaves SET FromDate = '" + editLeave.FromDate + "', ToDate = '" + editLeave.ToDate + "', NoofDays = '" + editLeave.NoofDays + "', LeaveType = '" + editLeave.LeaveType + "'  WHERE ID = '" + editLeave.ID + "' ", connection);
+            connection.Open();
+            int i = cmd.ExecuteNonQuery();
+            connection.Close();
+            if (i > 0)
+                return true;
+            return false;
+        }
+        
         public override bool DeleteLeave(DeleteLeave deleteLeave)
         {
             SqlCommand cmd = new SqlCommand("DELETE FROM Leaves WHERE ID = '" + deleteLeave.ID + "' ", connection);
@@ -197,6 +208,16 @@ namespace LMS.Data
         public override bool RejectExtraLeave(RejectExtraLeave rejectExtraLeave)
         {
             SqlCommand cmd = new SqlCommand("UPDATE ExtraLeaves SET IsApproved = 2 WHERE ID = '" + rejectExtraLeave.ID + "' ", connection);
+            connection.Open();
+            int i = cmd.ExecuteNonQuery();
+            connection.Close();
+            if (i > 0)
+                return true;
+            return false;
+        }
+        public override bool EditExtraLeave(EditExtraLeave editExtraLeave)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE ExtraLeaves SET FromDate = '" + editExtraLeave.FromDate + "', ToDate = '" + editExtraLeave.ToDate + "', NoofDays = '" + editExtraLeave.NoofDays + "',Reason = '" + editExtraLeave.Reason + "'  WHERE ID = '" + editExtraLeave.ID + "' ", connection);
             connection.Open();
             int i = cmd.ExecuteNonQuery();
             connection.Close();
