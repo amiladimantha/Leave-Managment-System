@@ -9,8 +9,8 @@ namespace LMS.Library
         public string Password { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Address { get; set; }
-        public string Birthday { get; set; }
+        public string? Address { get; set; }
+        public string? Birthday { get; set; }
         public int IsActive { get; set; }
         public int IsApproved { get; set; }
         public int AccountType { get; set; }

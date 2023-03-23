@@ -11,6 +11,11 @@
     <Compile Remove="Dal.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.Odbc" Version="7.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="&quot;$(SolutionDir)filecopy.cmd&quot; &quot;$(TargetPath)&quot;" />
   </Target>

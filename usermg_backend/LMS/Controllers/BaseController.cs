@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LMS.Data;
+using System.Data.OleDb;
 
 namespace LMS.Controllers
 {
@@ -17,9 +18,12 @@ namespace LMS.Controllers
             //if (dataAccess == null)
             //    dataAccess = new XMLData(connectionString: configuration.GetConnectionString("database"));
 
-
             if (dataAccess == null)
-                dataAccess = new SQLData(connectionString: configuration.GetConnectionString("database"));
+                dataAccess = new AccessData(connectionString: configuration.GetConnectionString("database"));
+
+
+            //if (dataAccess == null)
+            //    dataAccess = new SQLData(connectionString: configuration.GetConnectionString("database"));
 
 
         }

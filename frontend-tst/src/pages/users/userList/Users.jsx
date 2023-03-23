@@ -339,12 +339,15 @@ export default function UsersList() {
     //     Address:address,
     //     Birthday:birthday,
     // };
+    console.log(editData);
 
     const url = "https://localhost:7046/api/User/EditUser";
+    
     axios
       .post(url, editData)
       .then((result) => {
         const data = result.data;
+        console.log(data);
         if (data.statusCode === 200) {
           message.success("User Edited Successfully");
         } else {
