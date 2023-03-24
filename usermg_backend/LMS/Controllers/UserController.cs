@@ -35,6 +35,8 @@ namespace LMS.Controllers
                     reg.AccountType = Convert.ToInt32(rows[0]["AccountType"]);
                     reg.IsActive = Convert.ToInt32(rows[0]["IsActive"]);
                     reg.IsApproved = Convert.ToInt32(rows[0]["IsApproved"]);
+                    reg.Image = (byte[])rows[0]["Image"];
+
 
                     response.Registration = reg;
                 }

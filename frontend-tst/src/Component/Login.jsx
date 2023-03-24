@@ -89,6 +89,7 @@ export default function Login() {
               localStorage.setItem("birthday", dt.registration.birthday);
               localStorage.setItem("address", dt.registration.address);
               localStorage.setItem("accountType",dt.registration.accountType);
+              localStorage.setItem("image",dt.registration.image);
               navigate("/users/admin");
               message.success("Admin user Login successful");
             } else {
@@ -99,6 +100,7 @@ export default function Login() {
               localStorage.setItem("birthday", dt.registration.birthday);
               localStorage.setItem("address", dt.registration.address);          
               localStorage.setItem("accountType",dt.registration.accountType);
+              localStorage.setItem("image",dt.registration.image);
               if(dt.registration.accountType === 1){
                 navigate("/users/manager")
                 message.success("Login successful");
@@ -111,6 +113,7 @@ export default function Login() {
               localStorage.setItem("birthday", dt.registration.birthday);
               localStorage.setItem("address", dt.registration.address);          
               localStorage.setItem("accountType",dt.registration.accountType);
+              localStorage.setItem("image",dt.registration.image);
               navigate("/users/staff")
               message.success("Login successful");
               }            

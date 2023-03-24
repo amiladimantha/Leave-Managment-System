@@ -83,16 +83,22 @@ namespace LMS.Data
                 return true;
             return false;
         }
-        //public override bool EditUser(EditUser editUser)
-        //{
-        //    SqlCommand cmd = new SqlCommand("Update Registration SET(Name,Email,Password,Phone,IsActive,IsApproved,AccountType,Birthday,Address) VALUES ('" + editUser.Name + "','" + editUser.Email + "','" + editUser.Password + "','" + editUser.Phone + "',1,'" + editUser.IsApproved + "', '" + editUser.AccountType + "', '" + editUser.Birthday + "', '" + editUser.Address + "')", connection);
-        //    connection.Open();
-        //    int i = cmd.ExecuteNonQuery();
-        //    connection.Close();
-        //    if (i > 0)
-        //        return true;
-        //    return false;
-        //}
+
+        public override bool EditProfileImage(int id, byte[] image)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE Registration SET Image = @Image WHERE ID = @ID AND IsActive = 1", connection);
+            cmd.Parameters.AddWithValue("@Image", image);
+            cmd.Parameters.AddWithValue("@ID", id);
+            connection.Open();
+            int i = cmd.ExecuteNonQuery();
+            connection.Close();
+            if (i > 0)
+                return true;
+            return false;
+        }
+
+
+
         public override bool ApproveUser(ApproveUser approveUser)
         {
             SqlCommand cmd = new SqlCommand("UPDATE Registration SET IsApproved = 1 WHERE ID = '" + approveUser.ID + "' AND IsActive = 1", connection);

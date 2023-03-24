@@ -14,5 +14,6 @@ namespace LMS.Library
         public int IsActive { get; set; }
         public int IsApproved { get; set; }
         public int AccountType { get; set; }
+        public byte[] Image { get; set; }
     }
 }

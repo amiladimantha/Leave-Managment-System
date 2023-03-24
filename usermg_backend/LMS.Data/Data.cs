@@ -49,10 +49,11 @@ namespace LMS.Data
         {
             return false;
         }
-        //public virtual bool EditUser(EditUser editUser)
-        //{
-        //    return false;
-        //}
+        public virtual bool EditProfileImage(int id, byte[] image)
+        {
+            return false;
+        }
+
         public virtual bool ApproveUser(ApproveUser approveUser)
         {
             return false;
