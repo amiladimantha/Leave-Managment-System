@@ -7,9 +7,11 @@ import { BellFilled, SettingFilled } from "@ant-design/icons";
 export default function Topbar() {
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     setUserName(localStorage.getItem("username"));
+    setImage(localStorage.getItem("image"));
   }, []);
 
   const logout = (e) => {
@@ -37,11 +39,7 @@ export default function Topbar() {
             <label>{username}</label>
           </div>
 
-          <img
-            src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2022%2F12%2Fgame-of-thrones-kit-harington-teases-jon-snow-spinoff-series-tw.jpg?w=960&cbr=1&q=90&fit=max"
-            alt=""
-            className="topAvatar"
-          />
+          <img src={`data:image/png;base64,${image}`} alt="" className="topAvatar" />
         </div>
       </div>
     </div>
