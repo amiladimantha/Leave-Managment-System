@@ -641,6 +641,42 @@ namespace LMS.Data
             return result;
         }
 
+        public override bool EditProfileImage(int id, byte[] image)
+        {
+            bool result = false;
+
+            try
+            {
+                DataSet dataSet = new DataSet();
+                dataSet.ReadXml(xmlFileName);
+
+                DataRow[] rows = dataSet.Tables["registration"].Select("ID = " + id + " AND IsActive = 1");
+                if (rows.Length == 1)
+                {
+                    DataTable table = dataSet.Tables["registration"];
+                    if (!table.Columns.Contains("Image")) // check if the Image column exists
+                    {
+                        // if the Image column does not exist, add it as a string column
+                        DataColumn imageColumn = new DataColumn("Image", typeof(string));
+                        table.Columns.Add(imageColumn);
+                    }
+
+                    string base64Image = Convert.ToBase64String(image); // convert byte[] image to base64 string
+                    rows[0]["Image"] = base64Image; // store base64 string in XML database
+                    dataSet.WriteXml(xmlFileName);
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+
+
+
 
     }
 }

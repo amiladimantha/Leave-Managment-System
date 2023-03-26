@@ -15,15 +15,15 @@ namespace LMS.Controllers
             _configuration = configuration;
 
 
-            //if (dataAccess == null)
-            //    dataAccess = new XMLData(connectionString: configuration.GetConnectionString("database"));
+            if (dataAccess == null)
+                dataAccess = new XMLData(connectionString: configuration.GetConnectionString("database"));
 
             //if (dataAccess == null)
             //    dataAccess = new AccessData(connectionString: configuration.GetConnectionString("database"));
 
 
-            if (dataAccess == null)
-                dataAccess = new SQLData(connectionString: configuration.GetConnectionString("database"));
+            //if (dataAccess == null)
+            //    dataAccess = new SQLData(connectionString: configuration.GetConnectionString("database"));
 
 
         }

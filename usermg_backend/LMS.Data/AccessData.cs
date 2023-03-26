@@ -395,6 +395,20 @@ public class AccessData : Data
 
     }
 
+    public override bool EditProfileImage(int id, byte[] image)
+    {
+        OleDbCommand cmd = new OleDbCommand("UPDATE Registration SET Image = @Image WHERE ID = @ID AND IsActive = 1", connection);
+        cmd.Parameters.Add("@Image", OleDbType.LongVarBinary).Value = image;
+        cmd.Parameters.AddWithValue("@ID", id);
+        connection.Open();
+        int i = cmd.ExecuteNonQuery();
+        connection.Close();
+        if (i > 0)
+            return true;
+        return false;
+    }
+
+
 
 
 

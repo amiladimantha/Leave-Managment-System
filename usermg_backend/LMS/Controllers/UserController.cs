@@ -19,37 +19,51 @@ namespace LMS.Controllers
         {
             Response response = new Response();
             DataRow[] rows= dataAccess.Login(login);
-            if (rows != null)
+            if (rows != null && rows.Length > 0)
             {
-                if (rows.Length>0)
+                response.StatusCode = 200;
+                response.StatusMessage = "Login Successful!";
+                Registration reg = new Registration();
+                reg.ID = Convert.ToInt32(rows[0]["ID"]);
+                reg.Name = Convert.ToString(rows[0]["Name"]);
+                reg.Email = Convert.ToString(rows[0]["Email"]);
+                reg.Phone = Convert.ToString(rows[0]["Phone"]);
+                reg.Address = Convert.ToString(rows[0]["Address"]);
+                reg.Birthday = Convert.ToString(rows[0]["Birthday"]);
+                reg.AccountType = Convert.ToInt32(rows[0]["AccountType"]);
+                reg.IsActive = Convert.ToInt32(rows[0]["IsActive"]);
+                reg.IsApproved = Convert.ToInt32(rows[0]["IsApproved"]);
+                if (rows[0]["Image"] != null && !string.IsNullOrEmpty(rows[0]["Image"].ToString()))
                 {
-                    response.StatusCode = 200;
-                    response.StatusMessage = "Login Successful!";
-                    Registration reg = new Registration();
-                    reg.ID = Convert.ToInt32(rows[0]["ID"]);
-                    reg.Name = Convert.ToString(rows[0]["Name"]);
-                    reg.Email = Convert.ToString(rows[0]["Email"]);
-                    reg.Phone = Convert.ToString(rows[0]["Phone"]);
-                    reg.Address = Convert.ToString(rows[0]["Address"]);
-                    reg.Birthday = Convert.ToString(rows[0]["Birthday"]);
-                    reg.AccountType = Convert.ToInt32(rows[0]["AccountType"]);
-                    reg.IsActive = Convert.ToInt32(rows[0]["IsActive"]);
-                    reg.IsApproved = Convert.ToInt32(rows[0]["IsApproved"]);
-                    reg.Image = (byte[])rows[0]["Image"];
-
-
-                    response.Registration = reg;
+                    if (rows[0]["Image"] is byte[])
+                    {
+                        reg.Image = (byte[])rows[0]["Image"];
+                    }
+                    else if (rows[0]["Image"] is string)
+                    {
+                        reg.Image = Convert.FromBase64String(rows[0]["Image"].ToString());
+                    }
+                    else
+                    {
+                        reg.Image = null;
+                    }
                 }
                 else
                 {
-                    response.StatusCode = 100;
-                    response.StatusMessage = "Login Failed!";
-                    response.Registration = null;
+                    reg.Image = null;
                 }
-                
+
+                response.Registration = reg;
+            }
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage = "Login Failed!";
+                response.Registration = null;
             }
 
-            
+
+
             return response;
         }
 
