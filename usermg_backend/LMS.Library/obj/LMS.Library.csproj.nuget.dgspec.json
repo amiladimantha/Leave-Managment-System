@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj": {}
+    "C:\\Users\\amila\\OneDrive\\Desktop\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj": {
+    "C:\\Users\\amila\\OneDrive\\Desktop\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj",
+        "projectUniqueName": "C:\\Users\\amila\\OneDrive\\Desktop\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj",
         "projectName": "LMS.Library",
-        "projectPath": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj",
+        "projectPath": "C:\\Users\\amila\\OneDrive\\Desktop\\leave_management_system\\usermg_backend\\LMS.Library\\LMS.Library.csproj",
         "packagesPath": "C:\\Users\\amila\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amila\\OneDrive\\Desktop\\Azure_LMS\\leave_management_system\\usermg_backend\\LMS.Library\\obj\\",
+        "outputPath": "C:\\Users\\amila\\OneDrive\\Desktop\\leave_management_system\\usermg_backend\\LMS.Library\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
