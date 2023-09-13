@@ -37,10 +37,6 @@ This project was something I did for an internship, so other than using the Logo
 - ASP.NET C#
 - SQL/XML/OLEDB
 
-## Pre Recorded Demo
-
-- Click [here](https://hotel-landin-page-rosy.vercel.app/) to view the live demo.
-
 ## Getting Started
 
 To get started with this, follow these simple steps:
